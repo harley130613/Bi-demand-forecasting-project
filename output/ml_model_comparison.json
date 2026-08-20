@@ -1,0 +1,71 @@
+{
+  "problem": "Dự báo số booking theo ngày x tỉnh/thành (6 khu vực lớn nhất) — regression theo chuỗi thời gian",
+  "train_period": "2025-01-01 to 2025-10-31",
+  "test_period": "2025-11-01 to 2025-12-31",
+  "features": [
+    "city_code",
+    "dow",
+    "month",
+    "is_weekend",
+    "day_of_year",
+    "lag_7",
+    "lag_1",
+    "roll_mean_7",
+    "roll_mean_14"
+  ],
+  "model_comparison": {
+    "NaiveBaseline_lag7": {
+      "MAE": 28.0,
+      "RMSE": 64.07,
+      "MAPE_%": 32.1
+    },
+    "LinearRegression": {
+      "MAE": 35.84,
+      "RMSE": 69.28,
+      "MAPE_%": 65.53
+    },
+    "RandomForest": {
+      "MAE": 30.58,
+      "RMSE": 66.63,
+      "MAPE_%": 28.65
+    },
+    "GradientBoosting": {
+      "MAE": 29.91,
+      "RMSE": 65.9,
+      "MAPE_%": 26.75
+    }
+  },
+  "selected_model": "GradientBoosting",
+  "feature_importance": {
+    "RandomForest": {
+      "city_code": 0.0042,
+      "dow": 0.0023,
+      "month": 0.0004,
+      "is_weekend": 0.0002,
+      "day_of_year": 0.0024,
+      "lag_7": 0.0349,
+      "lag_1": 0.8667,
+      "roll_mean_7": 0.08,
+      "roll_mean_14": 0.0089
+    },
+    "GradientBoosting": {
+      "city_code": 0.0003,
+      "dow": 0.003,
+      "month": 0.0003,
+      "is_weekend": 0.0003,
+      "day_of_year": 0.0029,
+      "lag_7": 0.0314,
+      "lag_1": 0.94,
+      "roll_mean_7": 0.0148,
+      "roll_mean_14": 0.0069
+    }
+  },
+  "cities": [
+    "Thành phố Hà Nội",
+    "Thành phố Hồ Chí Minh",
+    "Thành phố Đà Nẵng",
+    "Tỉnh Bình Dương",
+    "Tỉnh Đồng Nai",
+    "Vũng Tàu"
+  ]
+}
